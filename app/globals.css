@@ -1,0 +1,111 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fffaf4;
+  color: #35271f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.page {
+  width: min(760px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.hero,
+.import-header {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #b14828;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  line-height: 1;
+}
+
+.button,
+.upload-label {
+  display: inline-block;
+  border-radius: 8px;
+  background: #b14828;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 12px 18px;
+  text-decoration: none;
+}
+
+.button {
+  margin-top: 16px;
+}
+
+.upload-card,
+.recipe-card {
+  border: 1px solid #ead7c8;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 8px 24px rgb(75 45 25 / 8%);
+  padding: 24px;
+}
+
+.upload-card input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.file-status {
+  margin-bottom: 0;
+  color: #725c4e;
+}
+
+.error-message {
+  color: #a42626;
+  font-weight: 700;
+}
+
+.recipe-list {
+  margin-top: 40px;
+}
+
+.recipe-card {
+  margin-top: 16px;
+}
+
+.recipe-card h3 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.recipe-card h4 {
+  margin-bottom: 8px;
+}
+
+.recipe-text {
+  margin-top: 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
