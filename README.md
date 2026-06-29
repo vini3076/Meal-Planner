@@ -2,9 +2,9 @@
 
 A beginner-friendly meal planning app for importing recipes from Paprika.
 
-Milestone 1 lets you upload a Paprika `.paprikarecipes` export and view each
-recipe's name, ingredients, and directions. The file is parsed locally in your
-browser and is not uploaded or saved.
+Milestone 3 lets you upload a Paprika `.paprikarecipes` export, save recipes to
+Supabase, view the recipe library, and enter available ingredients for the next
+matching step.
 
 The frontend is written with React using plain JavaScript and JSX. TypeScript is
 currently used only for the Paprika parser and recipe data types.
@@ -18,6 +18,7 @@ Install these before starting:
 - [Node.js](https://nodejs.org/) version 20 or newer
 - npm, which is included with Node.js
 - A Paprika `.paprikarecipes` export file for testing
+- A Supabase project with `recipes` and `recipe_ingredients` tables
 
 ### Install and Run
 
@@ -33,13 +34,20 @@ Install these before starting:
    npm install
    ```
 
-3. Start the development server:
+3. Create `.env.local` from `.env.example` and add your Supabase values:
+
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your_key_here
+   ```
+
+4. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-4. Open [http://localhost:3000/import](http://localhost:3000/import) in your
+5. Open [http://localhost:3000/import](http://localhost:3000/import) in your
    browser.
 
 To stop the development server, press `Control+C` in the terminal.
@@ -51,9 +59,20 @@ To stop the development server, press `Control+C` in the terminal.
 3. Select **Choose a Paprika export**.
 4. Choose your `.paprikarecipes` file.
 5. Confirm the imported recipe name, ingredients, and directions appear.
+6. Select **Save to recipe library**.
+7. Open [http://localhost:3000/recipes](http://localhost:3000/recipes) and
+   confirm the saved recipes appear after refreshing.
 
-Imported recipes are kept only in the browser's memory. Refreshing the page
-clears them.
+Imported recipes are parsed in the browser, then saved to Supabase only when you
+select **Save to recipe library**.
+
+## Test the Ingredient Input Flow
+
+1. Open [http://localhost:3000/plan](http://localhost:3000/plan).
+2. Enter one ingredient per line.
+3. Confirm the app shows the normalized ingredient names.
+4. Select **Use these ingredients**.
+5. Confirm the normalized list appears under **Ingredients ready for Milestone 4**.
 
 ## Useful Commands
 
@@ -73,5 +92,5 @@ npm run start
 
 ## Current Scope
 
-Milestone 1 uses Next.js only. It does not include Supabase, authentication,
-AI, meal planning, ingredient matching, or grocery list logic.
+Milestone 3 uses Next.js and Supabase. It does not include authentication, AI,
+recipe matching, generated meal plans, or grocery list logic.

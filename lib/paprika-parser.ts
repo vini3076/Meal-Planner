@@ -2,11 +2,50 @@ import JSZip from "jszip";
 import { ungzip } from "pako";
 import type { PaprikaRecipe, Recipe } from "@/types/recipe";
 
+function optionalString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim() ? value : undefined;
+}
+
+function optionalNumber(value: unknown): number | undefined {
+  if (typeof value === "number") {
+    return value;
+  }
+
+  if (typeof value === "string" && value.trim()) {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : undefined;
+  }
+
+  return undefined;
+}
+
+function optionalStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const strings = value.filter(
+    (item): item is string => typeof item === "string" && item.trim().length > 0,
+  );
+
+  return strings.length > 0 ? strings : undefined;
+}
+
 function toRecipe(value: PaprikaRecipe): Recipe {
   return {
+    paprika_uid: optionalString(value.uid) || optionalString(value.paprika_uid),
     name: typeof value.name === "string" && value.name ? value.name : "Untitled recipe",
     ingredients: typeof value.ingredients === "string" ? value.ingredients : "",
     directions: typeof value.directions === "string" ? value.directions : "",
+    servings: optionalString(value.servings),
+    prep_time: optionalString(value.prep_time),
+    cook_time: optionalString(value.cook_time),
+    total_time: optionalString(value.total_time),
+    source: optionalString(value.source),
+    source_url: optionalString(value.source_url),
+    categories: optionalStringArray(value.categories),
+    rating: optionalNumber(value.rating),
+    image_url: optionalString(value.image_url),
   };
 }
 
