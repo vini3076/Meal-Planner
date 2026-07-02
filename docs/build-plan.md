@@ -55,9 +55,9 @@ Upload one Paprika `.paprikarecipes` file, parse it, and display the imported re
 Create:
 
 ```text
-app/import/page.tsx
-components/FileUpload.tsx
-components/RecipeCard.tsx
+app/import/page.jsx
+components/FileUpload.jsx
+components/RecipeCard.jsx
 lib/paprika-parser.ts
 types/recipe.ts
 ```
@@ -112,9 +112,9 @@ recipe_ingredients
 Create:
 
 ```text
-app/recipes/page.tsx
-lib/supabase-client.ts
-lib/recipe-service.ts
+app/recipes/page.jsx
+lib/supabase-client.js
+lib/recipe-service.js
 ```
 
 ### Acceptance criteria
@@ -144,8 +144,8 @@ Let the user enter ingredients they currently have at home.
 Create:
 
 ```text
-components/IngredientInput.tsx
-lib/ingredient-normalizer.ts
+components/IngredientInput.jsx
+lib/ingredient-normalizer.js
 ```
 
 Optional Supabase table:
@@ -181,8 +181,8 @@ Rank recipes by how well they use the ingredients the user already has.
 Create:
 
 ```text
-lib/recipe-matcher.ts
-components/RecipeMatchList.tsx
+lib/recipe-matcher.js
+components/RecipeMatchList.jsx
 ```
 
 ### Matching logic
@@ -230,9 +230,9 @@ Generate a dinner-only 5-day meal plan.
 Create:
 
 ```text
-app/plan/page.tsx
-lib/meal-plan-generator.ts
-components/MealPlanCard.tsx
+app/plan/page.jsx
+lib/meal-plan-generator.js
+components/MealPlanCard.jsx
 ```
 
 Optional Supabase tables:
@@ -277,8 +277,8 @@ Allow the user to exclude recipes they do not feel like cooking this week.
 Create:
 
 ```text
-components/ExcludeRecipeButton.tsx
-lib/exclusion-service.ts
+components/ExcludeRecipeButton.jsx
+lib/exclusion-service.js
 ```
 
 Optional Supabase table:
@@ -314,8 +314,8 @@ Show only ingredients the user still needs to buy for the 5 selected dinners.
 Create:
 
 ```text
-lib/missing-ingredients.ts
-components/MissingIngredientsList.tsx
+lib/missing-ingredients.js
+components/MissingIngredientsList.jsx
 ```
 
 ### Logic

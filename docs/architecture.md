@@ -148,10 +148,10 @@ Suggested backend modules:
 
 ```text
 lib/paprika-parser.ts
-lib/ingredient-normalizer.ts
-lib/recipe-matcher.ts
-lib/meal-plan-generator.ts
-lib/missing-ingredients.ts
+lib/ingredient-normalizer.js
+lib/recipe-matcher.js
+lib/meal-plan-generator.js
+lib/missing-ingredients.js
 ```
 
 ---
@@ -426,27 +426,27 @@ sample-data/
   chocolate-strawberry-energy-bites.paprikarecipes
 
 app/
-  page.tsx
+  page.jsx
   import/
-    page.tsx
+    page.jsx
   recipes/
-    page.tsx
+    page.jsx
   plan/
-    page.tsx
+    page.jsx
 
 components/
-  FileUpload.tsx
-  RecipeCard.tsx
-  IngredientInput.tsx
-  MealPlanCard.tsx
-  MissingIngredientsList.tsx
+  FileUpload.jsx
+  RecipeCard.jsx
+  IngredientInput.jsx
+  MealPlanCard.jsx
+  MissingIngredientsList.jsx
 
 lib/
   paprika-parser.ts
-  ingredient-normalizer.ts
-  recipe-matcher.ts
-  meal-plan-generator.ts
-  missing-ingredients.ts
+  ingredient-normalizer.js
+  recipe-matcher.js
+  meal-plan-generator.js
+  missing-ingredients.js
 
 types/
   recipe.ts

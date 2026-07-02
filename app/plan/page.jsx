@@ -2,13 +2,36 @@
 
 import { useState } from "react";
 import IngredientInput from "@/components/IngredientInput";
+import RecipeMatchList from "@/components/RecipeMatchList";
+import { getRecipes } from "@/lib/recipe-service";
+import { matchRecipesToIngredients } from "@/lib/recipe-matcher";
 
 export default function PlanPage() {
   const [ingredients, setIngredients] = useState([]);
-  const [savedIngredients, setSavedIngredients] = useState([]);
+  const [matches, setMatches] = useState([]);
+  const [isMatching, setIsMatching] = useState(false);
+  const [matchError, setMatchError] = useState("");
+  const [hasMatched, setHasMatched] = useState(false);
 
-  function handleUseIngredients() {
-    setSavedIngredients(ingredients);
+  async function handleFindMatches() {
+    setIsMatching(true);
+    setMatchError("");
+    setHasMatched(false);
+
+    try {
+      const recipes = await getRecipes();
+      setMatches(matchRecipesToIngredients(recipes, ingredients));
+      setHasMatched(true);
+    } catch (caughtError) {
+      setMatches([]);
+      setMatchError(
+        caughtError instanceof Error
+          ? caughtError.message
+          : "We could not match recipes right now.",
+      );
+    } finally {
+      setIsMatching(false);
+    }
   }
 
   return (
@@ -25,10 +48,10 @@ export default function PlanPage() {
         <button
           className="button"
           type="button"
-          onClick={handleUseIngredients}
-          disabled={ingredients.length === 0}
+          onClick={handleFindMatches}
+          disabled={ingredients.length === 0 || isMatching}
         >
-          Use these ingredients
+          {isMatching ? "Finding matches..." : "Find matching recipes"}
         </button>
         <p className="file-status">
           {ingredients.length} {ingredients.length === 1 ? "ingredient" : "ingredients"} ready
@@ -36,18 +59,8 @@ export default function PlanPage() {
         </p>
       </section>
 
-      {savedIngredients.length > 0 && (
-        <section className="recipe-card">
-          <h2>Ingredients ready for Milestone 4</h2>
-          <ul className="ingredient-list">
-            {savedIngredients.map((item) => (
-              <li key={`saved-${item.ingredient}-${item.normalizedIngredientName}`}>
-                <span>{item.normalizedIngredientName}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      {matchError && <p className="error-message">{matchError}</p>}
+      {hasMatched && <RecipeMatchList matches={matches} />}
     </main>
   );
 }
