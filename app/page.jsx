@@ -7,7 +7,8 @@ export default function Home() {
         <p className="eyebrow">Paprika Smart Meal Planner</p>
         <h1>Bring your Paprika recipes with you.</h1>
         <p>
-          Import Paprika recipes, save them to your library, and start planning from what you already have.
+          Import Paprika recipes, save them to your library, and generate five dinners from what
+          you already have.
         </p>
         <div className="home-actions">
           <Link className="button" href="/import">

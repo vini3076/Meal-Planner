@@ -2,9 +2,9 @@
 
 A beginner-friendly meal planning app for importing recipes from Paprika.
 
-Milestone 3 lets you upload a Paprika `.paprikarecipes` export, save recipes to
-Supabase, view the recipe library, and enter available ingredients for the next
-matching step.
+Milestone 5 lets you upload a Paprika `.paprikarecipes` export, save recipes to
+Supabase, enter available ingredients, rank recipe matches, and generate a
+five-day dinner plan from the highest-ranked recipes.
 
 The frontend is written with React using plain JavaScript and JSX. TypeScript is
 currently used only for the Paprika parser and recipe data types.
@@ -15,7 +15,7 @@ currently used only for the Paprika parser and recipe data types.
 
 Install these before starting:
 
-- [Node.js](https://nodejs.org/) version 20 or newer
+- [Node.js](https://nodejs.org/) version 20.9 or newer
 - npm, which is included with Node.js
 - A Paprika `.paprikarecipes` export file for testing
 - A Supabase project with `recipes` and `recipe_ingredients` tables
@@ -66,13 +66,17 @@ To stop the development server, press `Control+C` in the terminal.
 Imported recipes are parsed in the browser, then saved to Supabase only when you
 select **Save to recipe library**.
 
-## Test the Ingredient Input Flow
+## Test the Dinner Plan Flow
 
 1. Open [http://localhost:3000/plan](http://localhost:3000/plan).
 2. Enter one ingredient per line.
 3. Confirm the app shows the normalized ingredient names.
-4. Select **Use these ingredients**.
-5. Confirm the normalized list appears under **Ingredients ready for Milestone 4**.
+4. Select **Generate 5-day dinner plan**.
+5. Confirm the plan shows one saved recipe for each day from Day 1 through Day 5.
+6. Expand **See all ranked recipe matches** to review why the recipes were prioritized.
+
+The recipe library must contain at least five different saved recipes before a
+five-day plan can be generated.
 
 ## Useful Commands
 
@@ -83,6 +87,12 @@ npm run dev
 # Check the code for lint errors
 npm run lint
 
+# Run the unit tests once
+npm test
+
+# Run the unit tests in watch mode while developing
+npm run test:watch
+
 # Create a production build
 npm run build
 
@@ -92,5 +102,5 @@ npm run start
 
 ## Current Scope
 
-Milestone 3 uses Next.js and Supabase. It does not include authentication, AI,
-recipe matching, generated meal plans, or grocery list logic.
+Milestone 5 uses Next.js and Supabase. It does not include authentication, AI,
+recipe exclusion, generated grocery lists, cuisine balancing, or leftover logic.

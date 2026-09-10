@@ -115,7 +115,9 @@ h1 {
 
 .upload-card,
 .recipe-card,
-.ingredient-input-card {
+.ingredient-input-card,
+.meal-plan-card,
+.plan-error {
   border: 1px solid #ead7c8;
   border-radius: 12px;
   background: white;
@@ -302,9 +304,103 @@ h1 {
   padding: 24px;
 }
 
+.plan-error {
+  margin-top: 24px;
+}
+
+.plan-error .error-message {
+  margin-top: 0;
+}
+
+.meal-plan-section {
+  margin-top: 48px;
+}
+
+.meal-plan-heading {
+  align-items: end;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.meal-plan-heading h2 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  margin: 0;
+}
+
+.meal-plan-heading > p {
+  color: #725c4e;
+  margin: 0;
+  max-width: 260px;
+  text-align: right;
+}
+
+.meal-plan-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.meal-plan-card {
+  position: relative;
+}
+
+.meal-plan-card h3 {
+  font-size: 1.6rem;
+  margin: 8px 0 12px;
+}
+
+.meal-plan-day {
+  color: #b14828;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.meal-type {
+  color: #725c4e;
+}
+
+.meal-plan-score {
+  color: #725c4e;
+  margin: 0 0 16px;
+}
+
+.meal-plan-link {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+.match-details {
+  border-top: 1px solid #ead7c8;
+  margin-top: 32px;
+  padding-top: 20px;
+}
+
+.match-details summary {
+  color: #6f321f;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.match-details .recipe-list {
+  margin-top: 24px;
+}
+
 @media (max-width: 560px) {
   .site-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .meal-plan-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .meal-plan-heading > p {
+    text-align: left;
   }
 }

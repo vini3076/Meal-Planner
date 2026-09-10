@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Paprika Smart Meal Planner",
-  description: "Import recipes from Paprika",
+  description: "Import Paprika recipes and generate a five-day dinner plan",
 };
 
 export default function RootLayout({ children }) {
