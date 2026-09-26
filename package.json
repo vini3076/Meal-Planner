@@ -16,7 +16,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
     "jszip": "^3.10.1",
-    "next": "^16.3.2",
+    "next": "^16.3.3",
     "pako": "^2.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -27,7 +27,7 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^16.3.2",
+    "eslint-config-next": "^16.3.3",
     "typescript": "^5.6.3",
     "vitest": "^4.1.11"
   },

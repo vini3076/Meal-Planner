@@ -2,9 +2,10 @@
 
 A beginner-friendly meal planning app for importing recipes from Paprika.
 
-Milestone 5 lets you upload a Paprika `.paprikarecipes` export, save recipes to
+Milestone 6 lets you upload a Paprika `.paprikarecipes` export, save recipes to
 Supabase, enter available ingredients, rank recipe matches, and generate a
-five-day dinner plan from the highest-ranked recipes.
+five-day dinner plan from the highest-ranked recipes. Recipes can be marked
+**Not this week** and replaced with the next eligible match.
 
 The frontend is written with React using plain JavaScript and JSX. TypeScript is
 currently used only for the Paprika parser and recipe data types.
@@ -73,10 +74,15 @@ select **Save to recipe library**.
 3. Confirm the app shows the normalized ingredient names.
 4. Select **Generate 5-day dinner plan**.
 5. Confirm the plan shows one saved recipe for each day from Day 1 through Day 5.
-6. Expand **See all ranked recipe matches** to review why the recipes were prioritized.
+6. Select **Not this week** on one dinner.
+7. Confirm that recipe moves to the exclusion list and the next ranked recipe replaces it.
+8. Select **Add back** to make the excluded recipe eligible again.
+9. Expand **See all eligible ranked recipe matches** to review why recipes were prioritized.
 
 The recipe library must contain at least five different saved recipes before a
-five-day plan can be generated.
+five-day plan can be generated. It needs additional recipes to replace excluded
+dinners. Exclusions last for the current browser session and reset when the page
+is reloaded.
 
 ## Useful Commands
 
@@ -102,5 +108,6 @@ npm run start
 
 ## Current Scope
 
-Milestone 5 uses Next.js and Supabase. It does not include authentication, AI,
-recipe exclusion, generated grocery lists, cuisine balancing, or leftover logic.
+Milestone 6 uses Next.js and Supabase. It does not include authentication, AI,
+persistent exclusions, generated grocery lists, cuisine balancing, or leftover
+logic.
