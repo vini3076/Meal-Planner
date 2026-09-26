@@ -1,4 +1,6 @@
-export default function MealPlanCard({ planItem }) {
+import ExcludeRecipeButton from "@/components/ExcludeRecipeButton";
+
+export default function MealPlanCard({ planItem, onExcludeRecipe }) {
   const { dayNumber, mealType, recipe } = planItem;
   const matchedIngredients = recipe.matchedIngredients || [];
 
@@ -8,7 +10,10 @@ export default function MealPlanCard({ planItem }) {
         Day {dayNumber} <span aria-hidden="true">·</span>{" "}
         <span className="meal-type">{mealType}</span>
       </p>
-      <h3>{recipe.name}</h3>
+      <div className="meal-plan-title-row">
+        <h3>{recipe.name}</h3>
+        <ExcludeRecipeButton recipe={recipe} onExclude={onExcludeRecipe} />
+      </div>
       <p className="meal-plan-score">
         {recipe.matchCount} of {recipe.totalIngredientCount} ingredients matched
         {typeof recipe.matchPercentage === "number" && (

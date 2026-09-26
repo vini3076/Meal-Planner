@@ -70,6 +70,28 @@ describe("generateMealPlan", () => {
     expect(rankedRecipes.map((recipe) => recipe.id)).toEqual(originalOrder);
   });
 
+  it("replaces an excluded recipe with the next highest-ranked option", () => {
+    const rankedRecipes = Array.from({ length: 6 }, (_, index) => rankedRecipe(index + 1));
+
+    const plan = generateMealPlan(rankedRecipes, [rankedRecipes[1]]);
+
+    expect(plan.map((item) => item.recipe.name)).toEqual([
+      "Recipe 1",
+      "Recipe 3",
+      "Recipe 4",
+      "Recipe 5",
+      "Recipe 6",
+    ]);
+  });
+
+  it("explains when exclusions leave fewer than five options", () => {
+    const rankedRecipes = Array.from({ length: 5 }, (_, index) => rankedRecipe(index + 1));
+
+    expect(() => generateMealPlan(rankedRecipes, [rankedRecipes[0]])).toThrow(
+      "A 5-day plan needs at least 5 different saved recipes. 4 remain after exclusions.",
+    );
+  });
+
   it("explains when fewer than five different recipes are available", () => {
     expect(() => generateMealPlan([rankedRecipe(1), rankedRecipe(2)])).toThrow(
       "A 5-day plan needs at least 5 different saved recipes. Your library currently has 2.",

@@ -347,6 +347,14 @@ h1 {
 
 .meal-plan-card h3 {
   font-size: 1.6rem;
+  margin: 0;
+}
+
+.meal-plan-title-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
   margin: 8px 0 12px;
 }
 
@@ -371,6 +379,71 @@ h1 {
 .meal-plan-link {
   display: inline-block;
   margin-top: 18px;
+}
+
+.exclude-recipe-button,
+.include-recipe-button {
+  border: 1px solid #d8c2b1;
+  border-radius: 8px;
+  color: #6f321f;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+.exclude-recipe-button {
+  background: #fff7ef;
+}
+
+.include-recipe-button {
+  background: white;
+}
+
+.exclude-recipe-button:hover,
+.include-recipe-button:hover {
+  background: #f2e3d5;
+}
+
+.excluded-recipes {
+  background: #f7eee5;
+  border: 1px solid #dfc4ae;
+  border-radius: 12px;
+  display: grid;
+  gap: 20px;
+  margin-top: 32px;
+  padding: 24px;
+}
+
+.excluded-recipes h2 {
+  margin: 0 0 8px;
+}
+
+.excluded-recipes p:last-child {
+  color: #725c4e;
+  margin-bottom: 0;
+}
+
+.excluded-recipes ul {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.excluded-recipes li {
+  align-items: center;
+  background: rgb(255 255 255 / 70%);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+.excluded-recipes li span {
+  font-weight: 700;
 }
 
 .match-details {
@@ -402,5 +475,14 @@ h1 {
 
   .meal-plan-heading > p {
     text-align: left;
+  }
+
+  .meal-plan-title-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .exclude-recipe-button {
+    align-self: flex-start;
   }
 }
